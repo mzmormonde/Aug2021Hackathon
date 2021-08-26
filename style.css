@@ -1,0 +1,57 @@
+
+html, body{
+    color: #F2F5F7;
+    background: #1d1d1d;
+    position: relative; 
+    text-shadow: .05vw .05vw rgba(206, 216, 223, 0.3); 
+    font-size: clamp(1vw, 1.2vw, 1.4vw);
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  
+
+  
+  .profileContainer{
+    margin: auto; 
+    height: 100%;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    border-radius: .5rem;
+    padding: .8rem; 
+    /* background-color: #ffffff; */
+    /* width: clamp(14rem, 17rem, 18rem); */
+  }
+
+  .profileImg{
+      width: clamp(9.5rem, 11.5rem, 13.5rem);
+      height: clamp(13rem, 15rem, 17rem); 
+      border-radius: .5rem;
+  }
+
+  .link{
+    color: #72aa76;
+    text-shadow: .03vw .03vw #F2F5F7;
+  }
+  .link:hover{
+    color: #46676b;
+  }
+  
+  ::-webkit-scrollbar {
+      width: clamp(.5em, .65em, .8em);
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #1d1d1d; 
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #ffffff; 
+      border-radius: .8em;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #2b442f; 
+  }
