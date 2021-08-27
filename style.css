@@ -50,6 +50,14 @@ html, body{
     color: rgb(141, 157, 207);
   }
 
+  .link2{
+    color: #D7AC83;
+  } 
+  .link2:hover{
+    color: rgb(141, 157, 207);
+  }
+
+
   figcaption.text{
     font-size: clamp(.8vw, 1vw, 1.2vw);
     text-shadow: .05vw .05vw rgba(0, 0, 0, 0.3); 
