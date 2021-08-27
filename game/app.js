@@ -25,7 +25,9 @@ function start() {
         // 0. Make background
 
         // This series will give these colors in order
-        var colors = series("#769296");
+        // var colors = series("#769296");
+
+        var background = "#769296"; 
 
         // The series is part of a special system called ZIM VEE
         // which uses a Pick object for dynamic parameters
@@ -36,7 +38,7 @@ function start() {
         // object.addTo(container) can add to any container, the stage is default
         // We can chain most ZIM methods such as addTo()
         // Here is where we use the colors series
-        new Tile(new Rectangle(stageW / 1, stageH / 1, colors), 1, 1).addTo();
+        new Tile(new Rectangle(stageW / 1, stageH / 1, background), 1, 1).addTo();
 
         // Set a style for all label colors
         // We could set this as parameters on each label instead...
@@ -76,7 +78,7 @@ function start() {
             .center(hole)
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // 1. Make the circle
+        // Make the circle
 
         // To animate the sections in we put each in a container
         // The chaining after can go on the same line or multiple lines
@@ -104,36 +106,7 @@ function start() {
         console.log("ONE LOC" + one.loc); 
         console.log("HOLE LOC" + hole.loc); 
         
-        // if(one.loc === hole.loc && one.loc === hole.loc){
-        //     console.log(one.loc); 
-        //     console.log(hole.loc)
-        // }
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // 5. Make the App title and icon
-
-        // this will now go on top of the circle that gets dragged
-        new Label({
-            text: "Game title",
-            //backgroundColor: "rgba(0,0,0,.1)" // can use any HTML color such as RGBA format
-        }).loc(30, 30);
-
-        // Use the asset() to access any assets
-        // can also access sound this way and then .play() the sound
-        asset("icon.png")
-            .sca(.6)
-            .alp(.8)
-            .centerReg()
-            .animate({
-                props: { rotation: 720, scale: 0 },
-                from: true,
-                wait: animateTime * 4,
-                time: animateTime,
-                ease: "backOut"
-            })
-            .hov(1) // will bring alpha to 1 when hovered
-            .tap(function () {
-                zgo("https://zimjs.com");
-            });
+        
 
         stage.update(); // this is needed to show any changes
 
