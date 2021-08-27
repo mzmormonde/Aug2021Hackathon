@@ -1,7 +1,7 @@
 
 html, body{
-    color: #F2F5F7;
-    background: #1d1d1d;
+    color: #456268;
+    background: #79A3B1;
     position: relative; 
     text-shadow: .05vw .05vw rgba(206, 216, 223, 0.3); 
     font-size: clamp(1vw, 1.2vw, 1.4vw);
@@ -10,7 +10,14 @@ html, body{
     letter-spacing: 0.1em;
   }
 
+  p{
+      color: #456268; 
+      font-weight: bold;
+  }
   
+  h2{
+    color: #2b3d41; 
+  }
 
   
   .profileContainer{
@@ -20,23 +27,27 @@ html, body{
     display: inline-block;
     position: relative;
     border-radius: .5rem;
-    padding: .8rem; 
-    /* background-color: #ffffff; */
+    padding: 1rem; 
+    background-color: #FCF8EC;
     /* width: clamp(14rem, 17rem, 18rem); */
   }
 
   .profileImg{
-      width: clamp(9.5rem, 11.5rem, 13.5rem);
-      height: clamp(13rem, 15rem, 17rem); 
-      border-radius: .5rem;
+      width: clamp(5rem, 7rem, 10rem);
+      height: clamp(5rem, 7rem, 10rem); 
+      border-radius: 5rem;
   }
 
   .link{
-    color: #72aa76;
-    text-shadow: .03vw .03vw #F2F5F7;
+    color: #456268;
+    text-shadow: .03vw .03vw #3F403F;
   }
   .link:hover{
-    color: #46676b;
+    color: #B2B8A3;
+  }
+
+  figcaption.text{
+    font-size:.65rem;
   }
   
   ::-webkit-scrollbar {
@@ -44,14 +55,14 @@ html, body{
   }
   /* Track */
   ::-webkit-scrollbar-track {
-      background: #1d1d1d; 
+      background: #79A3B1; 
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-      background: #ffffff; 
+      background: #FCF8EC; 
       border-radius: .8em;
   }
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-      background: #2b442f; 
+      background: #B2B8A3; 
   }
