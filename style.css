@@ -74,7 +74,7 @@ html, body{
   }
   .link{
     color: #5e7274;
-    background-color: white;
+    
     border-radius: .5rem;
     padding: .3rem;
     text-shadow: .05vw .05vw rgba(0, 0, 0, 0.6); 
@@ -83,6 +83,10 @@ html, body{
   }
   .link:hover{
     color: #D7AC83;
+  }
+
+  a#gameLink{
+    background-color: white;
   }
 
   .link2{
