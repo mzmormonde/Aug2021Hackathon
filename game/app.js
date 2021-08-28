@@ -65,7 +65,7 @@ function start() {
             .pos(35, 20, RIGHT, BOTTOM)
             .tap(function () {
                 //send back to home page
-                window.location.href = "/index.html";
+                window.location.href = "https://mzmormonde.github.io/Aug2021Hackathon/";
             });
 
 
