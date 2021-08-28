@@ -97,13 +97,14 @@ function start() {
         new Circle(30, "#D7AC83")
             .center(one)
             .drag(one);
+            console.log("ONE LOC" + one.loc); 
 
         new Label("Level 1")
             .alp(.7)
             .pos(30, 30, LEFT, BOTTOM, one);
 
 
-        console.log("ONE LOC" + one.loc); 
+        
         console.log("HOLE LOC" + hole.loc); 
         
         
