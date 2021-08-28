@@ -1,20 +1,26 @@
 
 // See Docs under Frame for FIT, FILL, FULL, and TAG scaling modes
 var scaling = FIT; // this will resize to fit inside the screen dimensions
-var width = 1024;
-var height = 768;
+var width = 1920;
+var height = 1080;
 var color = light; // zim has colors built in - see https://zimjs.com/docs.html
 var outerColor = darker;
 var assets = ["icon.png"]; // do not need array if only one, but need it if more than one
 var path = "assets/";
 
+var head = document.getElementsByTagName('HEAD')[0];
+var link = document.createElement('link');
+
 // the Frame sets up an HTML Canvas tag, the stage and handles scaling
 var frame = new Frame(scaling, width, height, color, outerColor, assets, path);
 
-function start() {
 
+
+//Find some way to create the board and pieces separately and call eachother
+//Currently, separating is breaking the game
+function start() {
     frame.on("ready", function () {
-        zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
+
 
         // the stage is where we put things if we want to see them!
         var stage = frame.stage;
@@ -22,24 +28,19 @@ function start() {
         var stageH = frame.height;
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // 0. Make background
+        // Make background
 
-        // This series will give these colors in order
-        var colors = series("#769296");
 
-        // The series is part of a special system called ZIM VEE
-        // which uses a Pick object for dynamic parameters
-        // https://zimjs.com/docs.html?item=Pick
+        var background = "#769296";
 
         // Tile background Rectangle
         // then add the tile to the stage
         // object.addTo(container) can add to any container, the stage is default
         // We can chain most ZIM methods such as addTo()
         // Here is where we use the colors series
-        new Tile(new Rectangle(stageW / 1, stageH / 1, colors), 1, 1).addTo();
+        var tile = new Tile(new Rectangle(stageW / 1, stageH / 1, background), 1, 1).addTo();
 
         // Set a style for all label colors
-        // We could set this as parameters on each label instead...
         // ZIM STYLE is similar to CSS but a slightly different system
         // but it has the same purpose - see:
         // https://zimjs.com/docs.html?item=STYLE
@@ -47,95 +48,179 @@ function start() {
             Label: { color: white }
         }
 
-        // This is our own variable
-        // to store a time in ms for animation on each section
-        // We could use an animate() series or sequence
-        // but we are keeping the intro more basic...
-        // We store it here because it is used in many places
-        // We could use an JavaScript 6 const...
-        // but we are showing this intro in ES5
-        // For info on ES6 see https://zimjs.com/tips.html#JAVASCRIPT6
-        // Note: as of ZIM Cat, time is in seconds (not milliseconds)
-        // To go back to milliseconds, use TIME = "milliseconds" or "ms"
-        var animateTime = .5;
-
-
-         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-         //Create hole to drop circle
-
-         var hole = new Container(stageW / 2, stageH / 1)
-            .addTo()
-            .alp(0) // start off with alpha (transparency) of 0
-            .animate({ alpha: 2 }, animateTime); // animate the alpha to 1
-
-
-        // dragging is very simple - just use obj.drag()
-        // and here we will add a boundary of the one container
-        // this could be customized with a Boundary object as well
-        new Circle(60, black)
-            .center(hole)
-
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // 1. Make the circle
-
-        // To animate the sections in we put each in a container
-        // The chaining after can go on the same line or multiple lines
-        // Multiple lines lets you comment out individual methods
-        // and can sometimes make the code easier to read
-        // Make sure the semi-colon goes right at the end!
         var one = new Container(stageW / 1, stageH / 1)
             .addTo()
             .alp(0) // start off with alpha (transparency) of 0
             .animate({ alpha: 1 }, animateTime); // animate the alpha to 1
 
-
-        // dragging is very simple - just use obj.drag()
-        // and here we will add a boundary of the one container
-        // this could be customized with a Boundary object as well
-        new Circle(30, "#D7AC83")
-            .center(one)
-            .drag(one);
-
-        new Label("Level 1")
-            .alp(.7)
-            .pos(30, 30, LEFT, BOTTOM, one);
+        // Note: as of ZIM Cat, time is in seconds (not milliseconds)
+        // To go back to milliseconds, use TIME = "milliseconds" or "ms"
+        var animateTime = .5;
 
 
-        console.log("ONE LOC" + one.loc); 
-        console.log("HOLE LOC" + hole.loc); 
-        
-        // if(one.loc === hole.loc && one.loc === hole.loc){
-        //     console.log(one.loc); 
-        //     console.log(hole.loc)
-        // }
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // 5. Make the App title and icon
-
-        // this will now go on top of the circle that gets dragged
-        new Label({
-            text: "Game title",
-            //backgroundColor: "rgba(0,0,0,.1)" // can use any HTML color such as RGBA format
-        }).loc(30, 30);
-
-        // Use the asset() to access any assets
-        // can also access sound this way and then .play() the sound
-        asset("icon.png")
-            .sca(.6)
-            .alp(.8)
-            .centerReg()
-            .animate({
-                props: { rotation: 720, scale: 0 },
-                from: true,
-                wait: animateTime * 4,
-                time: animateTime,
-                ease: "backOut"
-            })
-            .hov(1) // will bring alpha to 1 when hovered
+        //Maybe add a warning popup that progress will not be saved
+        //button options
+        // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+        new Button(200, 70, "HOME", "#D7AC83", "#75749E", one)
+            .pos(35, 20, RIGHT, BOTTOM)
             .tap(function () {
-                zgo("https://zimjs.com");
+                //send back to home page
+                window.location.href = "/index.html";
             });
+
+
+
+        levelOne(one, stage, stageH, stageW);
 
         stage.update(); // this is needed to show any changes
 
     }); // end of ready
+}
+
+function noAnswer(one, stage, stageH, stageW) {
+
+
+    // width, height, label, backingColor, backingRollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, buttonPadding
+    var closeBut = new Button(41, 41, "X", "black", "#444", "white", "2", 5);
+    var label = new Label("Please try again", 30, "Courier", "white");
+    // width, height, label, backgroundColor, color, draggable,
+    var paneDrag = new Pane({
+        width: 450,
+        height: 200,
+        label: label,
+        backgroundColor: "#8D9DCF",
+        draggable: true,
+        close: true
+
+
+    });
+    paneDrag.x = 400; paneDrag.y = 200;
+    closeBut.x = 136; closeBut.y = -130;
+
+    paneDrag.show();
+   
+
+}
+
+function correctAnswer(question, one, stage, stageH, stageW) {
+   
+    // width, height, label, backingColor, backingRollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, buttonPadding
+    var closeBut = new Button(41, 41, "X", "black", "#444", "white", "2", 5);
+    var label = new Label("Correct! ", 30, "Courier", "white");
+    // width, height, label, backgroundColor, color, draggable,
+
+    var paneDrag = new Pane({
+        width: 450,
+        height: 200,
+        label: label,
+        backgroundColor: "#8D9DCF",
+        draggable: true,
+        close: true
+
+    });
+   
+    paneDrag.x = 400; paneDrag.y = 200;
+    closeBut.x = 136; closeBut.y = -130;
+    
+
+    paneDrag.show();
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+    levelTwo(one); 
+  
+
+}
+
+
+function levelOne(one, stage, stageH, stageW) {
+
+    new Label("Level 1")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+
+    new Label("Let's start with an easy one, what is 2 + 2?")
+        .alp(.5)
+        .pos(0, 0, CENTER, CENTER, one);
+
+    var userInput = new TextArea({ color: "AAA", height: 60, size: 30, placeholder: "YOUR ANSWER" })
+        .center()
+        .alp(.8)
+        .pos(0, 80, CENTER, CENTER, one);
+
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+    new Button(150, 50, "Submit", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(250, 80, CENTER, CENTER, one)
+        .tap(submitUserInput);
+
+    function submitUserInput() {
+        console.log("in user input")
+        if (userInput.text == "4" || userInput.text.toLowerCase() == "four") {
+            correctAnswer(1, one);
+        } else if (userInput.text == "" || userInput.text != "4" || userInput.text.toLowerCase() != "four") {
+            noAnswer();
+        }
+
+    }
+   
+}
+
+function levelTwo(one, stage, stageH, stageW) {
+   
+    new Label("Level 2")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+
+    new Label("sfghnsf")
+        .alp(.7)
+        .pos(0, 0, CENTER, CENTER, one);
+
+    var userInput = new TextArea({ color: "AAA", height: 60, size: 30, placeholder: "sfgdhsgfdh" })
+        .center()
+        .pos(0, 80, CENTER, CENTER, one);
+
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+    new Button(150, 50, "sfghsfghn", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(250, 80, CENTER, CENTER, one)
+        
+        
+       
+
+}
+
+
+
+function levelTBD(one, stage, stageH, stageW) {
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Create hole to drop circle
+
+    var hole = new Container(stageW / 1.8, stageH / 1.4)
+        .addTo()
+        .alp(0) // start off with alpha (transparency) of 0
+        .animate({ alpha: 2 }, animateTime); // animate the alpha to 1
+
+
+    // dragging is very simple - just use obj.drag()
+    // and here we will add a boundary of the one container
+    // this could be customized with a Boundary object as well
+    var end = new Circle(75, black)
+        .center(hole)
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // Make the circle
+
+    var circle = new Circle(35, "#D7AC83")
+        .center(one)
+        .drag(one);
+
+
+    new Label("Level 1")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+
+
+    stage.update(); // this is needed to show any changes
+
+
 }

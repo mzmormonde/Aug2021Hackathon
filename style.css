@@ -1,3 +1,11 @@
+/*
+colors used: 
+white: F8F6EE
+light orange: D7AC83
+light blue/green: CCDADB
+cornflower blue: 8D9DCF
+purple: 75749E
+*/
 
 html, body{
     color: #75749E;
@@ -55,6 +63,10 @@ html, body{
   } 
   .link2:hover{
     color: rgb(141, 157, 207);
+  }
+
+  .preview{
+    border-radius: .5rem;
   }
 
 
