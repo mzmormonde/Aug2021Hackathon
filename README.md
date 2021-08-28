@@ -17,6 +17,7 @@ Web and frontend development is a new area, and games are a completely unfamilia
 html/css/bootstrap/javascript based project with the use of Zim (https://zimjs.com/index.html)
 
 ### Screenshots
+![Level 1](Images/Picture1.png)
 
 ### Developers
 

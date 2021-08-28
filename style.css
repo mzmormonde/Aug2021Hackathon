@@ -7,9 +7,9 @@ cornflower blue: 8D9DCF
 purple: 75749E
 */
 
+
 html, body{
-    color: #75749E;
-    background: #CCDADB;
+    color: #565574;
     position: relative; 
     text-shadow: .05vw .05vw rgba(0, 0, 0, 0.6); 
     font-size: clamp(1vw, 1.2vw, 1.4vw);
@@ -18,13 +18,34 @@ html, body{
     letter-spacing: 0.1em;
   }
 
+  body{
+    /* background: linear-gradient(45deg,  #769296,  #8D9DCF, #acd2d4, #8D9DCF, #769296 );  */
+    background: linear-gradient(45deg,  rgba(141, 157, 207, .5), rgba(215, 172, 131, .5), rgba(141, 157, 207, .5) ,
+    rgba(215, 172, 131, 0.5),   rgba(141, 157, 207, .5) ); 
+      animation: gradient 20s ease infinite; 
+      background-size: 400% 400%; 
+  }
+
+  @keyframes gradient{
+    0%{
+      background-position: 0% 50%; ;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0% 50%;
+    }
+  }
+  
+
   p{
-      color: #75749E; 
+      color: #565574; 
       font-weight: bold;
   }
   
   h2{
-    color: #F8F6EE; 
+    color: #ffffff; 
     font-weight: bold;
   }
 
@@ -42,27 +63,34 @@ html, body{
   }
 
   .profileImg{
-      width: clamp(5rem, 7rem, 10rem);
+      width: clamp(4.8rem, 6.8rem, 9.8rem);
       height: clamp(5rem, 7rem, 10rem); 
       border-radius: 5rem;
       
   }
 
+  #about:hover{
+    color: black; 
+  }
   .link{
-    color: #D7AC83;
+    color: #5e7274;
+    background-color: white;
+    border-radius: .5rem;
+    padding: .3rem;
     text-shadow: .05vw .05vw rgba(0, 0, 0, 0.6); 
     font-weight: bolder;
     font-size: clamp(1.3vw, 1.5vw, 1.7vw);
   }
   .link:hover{
-    color: rgb(141, 157, 207);
+    color: #D7AC83;
   }
 
   .link2{
-    color: #D7AC83;
+    color: #5e7274;
+
   } 
   .link2:hover{
-    color: rgb(141, 157, 207);
+    color: #D7AC83;
   }
 
   .preview{
@@ -81,14 +109,14 @@ html, body{
   }
   /* Track */
   ::-webkit-scrollbar-track {
-      background: #CCDADB; 
+      background: rgba(141, 157, 207, .5); 
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-      background: #769296; 
+      background: rgba(118, 146, 150, .75); 
       border-radius: .8em;
   }
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-      background: #75749E; 
+      background: rgba(117, 116, 158, .8); 
   }
