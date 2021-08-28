@@ -49,20 +49,20 @@ html, body{
       
   }
 
-
+  
   ::-webkit-scrollbar {
-      width: clamp(.5em, .65em, .8em);
-  }
-  /* Track */
-  ::-webkit-scrollbar-track {
-      background: #DBDEC4; 
-  }
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-      background: #769296; 
-      border-radius: .8em;
-  }
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-      background: #B2B8A3; 
-  }
+    width: clamp(.5em, .65em, .8em);
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #CCDADB; 
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #769296; 
+    border-radius: .8em;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #75749E; 
+}

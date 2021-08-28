@@ -81,7 +81,7 @@ html, body{
   }
   /* Track */
   ::-webkit-scrollbar-track {
-      background: #DBDEC4; 
+      background: #CCDADB; 
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
@@ -90,5 +90,5 @@ html, body{
   }
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-      background: #B2B8A3; 
+      background: #75749E; 
   }
