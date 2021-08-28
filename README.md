@@ -23,10 +23,3 @@ html/css/bootstrap/javascript based project with the use of Zim (https://zimjs.c
 Megan Ormonde: 
 Site: https://www.mzmo.dev/
 LinkedIn: https://www.linkedin.com/in/megan-ormonde-a7623b127/
-
-Michael Woodward: 
-Site: https://www.mwoodward.dev/
-LinkedIn: https://www.linkedin.com/in/michael-woodward1017/
-
-
-
