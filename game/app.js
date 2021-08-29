@@ -19,15 +19,6 @@ let maxLevel = 2;
 
 //Initial gameboard page
 function start() {
-    //Test to see if this changes the favicon properly on live site
-    var link = document.querySelector("link[rel~='icon']");
-    if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    }
-    link.href = "/Images/favicon-32x32.png";
-
 
     frame.on("ready", function () {
         // the stage is where we put things if we want to see them!
