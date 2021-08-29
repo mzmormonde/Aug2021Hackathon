@@ -1,4 +1,5 @@
 
+
 // See Docs under Frame for FIT, FILL, FULL, and TAG scaling modes
 var scaling = FIT; // this will resize to fit inside the screen dimensions
 var width = 1920;
@@ -18,6 +19,16 @@ let maxLevel = 2;
 
 //Initial gameboard page
 function start() {
+    //Test to see if this changes the favicon properly on live site
+    var link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    link.href = "/Images/favicon-32x32.png";
+
+
     frame.on("ready", function () {
         // the stage is where we put things if we want to see them!
         var stage = frame.stage;
@@ -210,7 +221,7 @@ function levelOne(one, stage, stageH, stageW) {
         console.log("in user input")
         if (userInput.text == "4" || userInput.text.toLowerCase() == "four") {
             userInput.text = "";
-            
+
             correctAnswer(one);
         } else if (userInput.text == "" || userInput.text != "4" || userInput.text.toLowerCase() != "four") {
             noAnswer();
@@ -250,7 +261,7 @@ function levelTwo(one, stage, stageH, stageW) {
         console.log("in user input")
         if (userInput.text.toLowerCase() == "california") {
             userInput.text = "";
-            
+
             correctAnswer(one);
         } else if (userInput.text == "" || userInput.text.toLowerCase() != "california") {
             noAnswer();
@@ -299,22 +310,22 @@ function levelTBD(one, stage, stageH, stageW) {
 function winner() {
 
     //look for ...confetti? animation or something
- 
+
     var lop = new LabelOnPath({
-        label:"You Win!",
+        label: "You Win!",
         // label:new Label({text:"JELLO JIGGLES!", size:50}),
         //path:new Blob(),
-         path:new Squiggle({
-             color:lighter,
-             thickness:4,
-             points:[[0,75,0,0,-100,200,100,-200],[300,75,0,0,-100,200,100,-200]], 
-         }).transformPoints("scaleX",2).transformPoints("rotation",0),
-        percentAngle:100, // default
-        showPath:false, // default
-        allowToggle:false, // default
-        interactive:false, // default
-        onTop:true // default
-     }).center();
-     zog(lop.text)
+        path: new Squiggle({
+            color: lighter,
+            thickness: 4,
+            points: [[0, 75, 0, 0, -100, 200, 100, -200], [300, 75, 0, 0, -100, 200, 100, -200]],
+        }).transformPoints("scaleX", 2).transformPoints("rotation", 0),
+        percentAngle: 100, // default
+        showPath: false, // default
+        allowToggle: false, // default
+        interactive: false, // default
+        onTop: true // default
+    }).center();
+    zog(lop.text)
 
 }
