@@ -1,4 +1,5 @@
 
+
 // See Docs under Frame for FIT, FILL, FULL, and TAG scaling modes
 var scaling = FIT; // this will resize to fit inside the screen dimensions
 var width = 1920;
@@ -14,10 +15,11 @@ var link = document.createElement('link');
 // the Frame sets up an HTML Canvas tag, the stage and handles scaling
 var frame = new Frame(scaling, width, height, color, outerColor, assets, path);
 var level = 0;
-let maxLevel = 2;
+let maxLevel = 6;
 
 //Initial gameboard page
 function start() {
+
     frame.on("ready", function () {
         // the stage is where we put things if we want to see them!
         var stage = frame.stage;
@@ -62,7 +64,9 @@ function start() {
             });
 
         if (level == 0) {
-            levelOne(one, stage, stageH, stageW);
+            //levelSix(one);
+            
+            levelOne(one);
         }
 
         stage.update(); // this is needed to show any changes
@@ -107,10 +111,22 @@ function clearBoard() {
         });
 
     if (level == 0) {
-        levelOne(one, stage, stageH, stageW);
+        levelOne(one);
     }
     else if (level == 1) {
-        levelTwo(one, stage, stageH, stageW);
+        levelTwo(one);
+    }
+    else if (level == 2) {
+        levelThree(one);
+    }
+    else if (level == 3) {
+        levelFour(one);
+    }
+    else if (level == 4) {
+        levelFive(one);
+    }
+    else if (level == 5) {
+        levelSix(one);
     }
 
     else if (level == maxLevel) {
@@ -120,7 +136,7 @@ function clearBoard() {
 }
 
 //If no answer or an incorrect answer is given
-function noAnswer(one, stage, stageH, stageW) {
+function noAnswer() {
 
     // width, height, label, backingColor, backingRollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, buttonPadding
     var closeBut = new Button(41, 41, "X", "black", "#444", "white", "2", 5);
@@ -145,7 +161,7 @@ function noAnswer(one, stage, stageH, stageW) {
 }
 
 //When the correct answer is given, navigate to the next page
-function correctAnswer(one, stage, stageH, stageW) {
+function correctAnswer() {
     level++;
     clearBoard();
 
@@ -179,15 +195,19 @@ function correctAnswer(one, stage, stageH, stageW) {
 }
 
 //Level One - Super simple to start
-function levelOne(one, stage, stageH, stageW) {
-
+function levelOne(one) {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Correct Answer
+    console.log("Question 1: 4")
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // labels
     new Label("Level 1")
         .alp(.7)
         .pos(30, 30, LEFT, BOTTOM, one);
-
-    new Label("Let's start with an easy one, what is 2 + 2?")
+    new Label("Math")
+        .alp(.7)
+        .pos(0, -120, CENTER, CENTER, one);
+    new Label("What is 2 + 2?")
         .alp(.5)
         .pos(0, 0, CENTER, CENTER, one);
 
@@ -207,11 +227,11 @@ function levelOne(one, stage, stageH, stageW) {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // submit user input
     function submitUserInput() {
-        console.log("in user input")
+        
         if (userInput.text == "4" || userInput.text.toLowerCase() == "four") {
             userInput.text = "";
-            
-            correctAnswer(one);
+
+            correctAnswer();
         } else if (userInput.text == "" || userInput.text != "4" || userInput.text.toLowerCase() != "four") {
             noAnswer();
         }
@@ -219,47 +239,259 @@ function levelOne(one, stage, stageH, stageW) {
 
 }
 
-//Level Two - Riddle
-function levelTwo(one, stage, stageH, stageW) {
+//Level Two - question
+function levelTwo(one) {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Correct Answer
+    console.log("Question 2: california")
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // labels
     new Label("Level 2")
         .alp(.7)
         .pos(30, 30, LEFT, BOTTOM, one);
-
-    new Label("Trivia: Which state is called the 'Golden State'?")
+    new Label("Geography")
+        .alp(.7)
+        .pos(0, -120, CENTER, CENTER, one);
+    new Label("Which state is called the 'Golden State'?")
         .alp(.7)
         .pos(0, 0, CENTER, CENTER, one);
-
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // get user input
     let userInput = new TextInput({ color: "AAA", height: 60, size: 30, placeholder: "Your Answer" })
         .alp(.7)
         .pos(0, 80, CENTER, CENTER, one);
-
     // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
     new Button(150, 50, "Submit", "#D7AC83", "#75749E", one)
         .alp(.7)
         .pos(250, 80, CENTER, CENTER, one)
         .tap(submitUserInput);
 
-
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // submit user input
     function submitUserInput() {
-        console.log("in user input")
+        
         if (userInput.text.toLowerCase() == "california") {
             userInput.text = "";
-            
-            correctAnswer(one);
+
+            correctAnswer();
         } else if (userInput.text == "" || userInput.text.toLowerCase() != "california") {
             noAnswer();
         }
     }
-
 }
 
+//Level Three - trivia w buttons
+function levelThree(one) {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Correct Answer
+    console.log("Question 3: Jane (even though she is a total toad)")
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // labels
+    new Label("Level 3")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+    new Label("Harry Potter")
+        .alp(.7)
+        .pos(0, -120, CENTER, CENTER, one);
+    new Label("What is Dolores Umbrige's middle name?")
+        .alp(.7)
+        .pos(0, 0, CENTER, CENTER, one);
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var test = 0;
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+    new Button(150, 50, "Hag", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(320, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
+    new Button(150, 50, "Jane", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(130, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = -1;
+            submitUserInput();
+        });
+    new Button(150, 50, "Toad", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(-60, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
+    new Button(150, 50, "May", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(-250, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // submit user input
+    function submitUserInput() {
+        
+        if (test == -1) {
+            test = 0;
+            
+            correctAnswer();
+        } else if (test == 1) {
+            test = 0;
+            noAnswer();
+        }
+    }
+}
+
+//Level Four - true/false
+function levelFour(one) {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Correct Answer
+    console.log("Question 4: True")
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // labels
+    new Label("Level 4")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+    new Label("History")
+        .alp(.7)
+        .pos(0, -120, CENTER, CENTER, one);
+    new Label("Yuri Gagarin was the first human in space")
+        .alp(.7)
+        .pos(0, 0, CENTER, CENTER, one);
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var test = 0;
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+
+    new Button(150, 50, "False", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(130, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
+    new Button(150, 50, "True", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(-60, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = -1;
+            submitUserInput();
+        });
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // submit user input
+    function submitUserInput() {
+        if (test == -1) {
+            test = 0;
+            correctAnswer();
+        } else if (test == 1) {
+            test = 0;
+            noAnswer();
+        }
+    }
+}
+
+//Level Five - written
+function levelFive(one) {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Correct Answer
+    console.log("Question 5: scotland")
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // labels
+    new Label("Level 5")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+    new Label("Animals")
+        .alp(.7)
+        .pos(0, -120, CENTER, CENTER, one);
+    new Label("The unicorn is the national animal of which country?")
+        .alp(.7)
+        .pos(0, 0, CENTER, CENTER, one);
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // get user input
+    let userInput = new TextInput({ color: "AAA", height: 60, size: 30, placeholder: "Your Answer" })
+        .alp(.7)
+        .pos(0, 80, CENTER, CENTER, one);
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+    new Button(150, 50, "Submit", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(250, 80, CENTER, CENTER, one)
+        .tap(submitUserInput);
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // submit user input
+    function submitUserInput() {
+        
+        if (userInput.text.toLowerCase() == "scotland") {
+            userInput.text = "";
+
+            correctAnswer();
+        } else if (userInput.text == "" || userInput.text.toLowerCase() != "scotland") {
+            noAnswer();
+        }
+    }
+}
+
+//Level Six - buttons
+function levelSix(one) {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //Correct Answer
+    console.log("Question 6: Gemini")
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // labels
+    new Label("Level 3")
+        .alp(.7)
+        .pos(30, 30, LEFT, BOTTOM, one);
+    new Label("Miscellaneous")
+        .alp(.7)
+        .pos(0, -120, CENTER, CENTER, one);
+    new Label("Which is the third zodiac")
+        .alp(.7)
+        .pos(0, 0, CENTER, CENTER, one);
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var test = 0;
+    // width, height, label, color, rollColor, borderColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, flatBottom, backing, rollBacking, rollPersist, icon, rollIcon, toggle, rollToggle, toggleEvent
+    new Button(180, 50, "Capricorn", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(330, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
+    new Button(150, 50, "Gemini", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(120, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = -1;
+            submitUserInput();
+        });
+    new Button(150, 50, "Aries", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(-80, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
+    new Button(150, 50, "Scorpio", "#D7AC83", "#75749E", one)
+        .alp(.7)
+        .pos(-280, 80, CENTER, CENTER, one)
+        .tap(e => {
+            test = 1;
+            submitUserInput();
+        });
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // submit user input
+    function submitUserInput() {
+        if (test == -1) {
+            test = 0;
+            correctAnswer();
+        } else if (test == 1) {
+            test = 0;
+            noAnswer();
+        }
+    }
+}
 
 
 //If I can ever get piece recognition, add movement questions
@@ -299,22 +531,22 @@ function levelTBD(one, stage, stageH, stageW) {
 function winner() {
 
     //look for ...confetti? animation or something
- 
+
     var lop = new LabelOnPath({
-        label:"You Win!",
+        label: "You Win!",
         // label:new Label({text:"JELLO JIGGLES!", size:50}),
         //path:new Blob(),
-         path:new Squiggle({
-             color:lighter,
-             thickness:4,
-             points:[[0,75,0,0,-100,200,100,-200],[300,75,0,0,-100,200,100,-200]], 
-         }).transformPoints("scaleX",2).transformPoints("rotation",0),
-        percentAngle:100, // default
-        showPath:false, // default
-        allowToggle:false, // default
-        interactive:false, // default
-        onTop:true // default
-     }).center();
-     zog(lop.text)
+        path: new Squiggle({
+            color: lighter,
+            thickness: 4,
+            points: [[0, 75, 0, 0, -100, 200, 100, -200], [300, 75, 0, 0, -100, 200, 100, -200]],
+        }).transformPoints("scaleX", 2).transformPoints("rotation", 0),
+        percentAngle: 100, // default
+        showPath: false, // default
+        allowToggle: false, // default
+        interactive: false, // default
+        onTop: true // default
+    }).center();
+    zog(lop.text)
 
 }
