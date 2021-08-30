@@ -14,7 +14,8 @@ var link = document.createElement('link');
 
 // the Frame sets up an HTML Canvas tag, the stage and handles scaling
 var frame = new Frame(scaling, width, height, color, outerColor, assets, path);
-var level = 0;
+//var level = 0;
+localStorage.setItem('level', 0); 
 let maxLevel = 2;
 
 //Initial gameboard page
@@ -60,12 +61,17 @@ function start() {
             .pos(35, 20, RIGHT, BOTTOM)
             .tap(function () {
                 //send back to home page
-                window.location.href = "https://mzmormonde.github.io/Aug2021Hackathon/";
+                //FOR TESTING
+                window.location.href = "/index.html"
+                //window.location.href = "https://mzmormonde.github.io/Aug2021Hackathon/";
             });
 
-        if (level == 0) {
+        console.log("LOCALSTORAGE @ " + localStorage.getItem('level'))
+
+        if (localStorage.getItem('level') == 0) {
+            console.log("LOCALSTORAGE WORKS - START @ 0")
             levelOne(one, stage, stageH, stageW);
-        }
+        } else(clearBoard()); 
 
         stage.update(); // this is needed to show any changes
 
@@ -105,17 +111,22 @@ function clearBoard() {
         .pos(35, 20, RIGHT, BOTTOM)
         .tap(function () {
             //send back to home page
-            window.location.href = "https://mzmormonde.github.io/Aug2021Hackathon/";
+            //FOR TESTING
+            window.location.href = "/index.html"
+            //window.location.href = "https://mzmormonde.github.io/Aug2021Hackathon/";
         });
 
-    if (level == 0) {
+    if (localStorage.getItem('level') == 0) {
+        console.log("LOCALSTORAGE @ " + localStorage.getItem('level'))
         levelOne(one, stage, stageH, stageW);
     }
-    else if (level == 1) {
+    else if (localStorage.getItem('level') == 1) {
+        console.log("LOCALSTORAGE @ " + localStorage.getItem('level'))
         levelTwo(one, stage, stageH, stageW);
     }
 
-    else if (level == maxLevel) {
+    else if (localStorage.getItem('level') == maxLevel) {
+        console.log("LOCALSTORAGE @ " + localStorage.getItem('level'))
         winner(stage);
     }
     stage.update(); // this is needed to show any changes
@@ -147,8 +158,10 @@ function noAnswer(one, stage, stageH, stageW) {
 }
 
 //When the correct answer is given, navigate to the next page
-function correctAnswer(one, stage, stageH, stageW) {
-    level++;
+function correctAnswer(one, incrementer) {
+    incrementer++; 
+    localStorage.setItem('level', incrementer)
+   
     clearBoard();
 
     //Maybe come back to this - popup with options 
@@ -213,7 +226,7 @@ function levelOne(one, stage, stageH, stageW) {
         if (userInput.text == "4" || userInput.text.toLowerCase() == "four") {
             userInput.text = "";
 
-            correctAnswer(one);
+            correctAnswer(one, 0);
         } else if (userInput.text == "" || userInput.text != "4" || userInput.text.toLowerCase() != "four") {
             noAnswer();
         }
@@ -253,7 +266,7 @@ function levelTwo(one, stage, stageH, stageW) {
         if (userInput.text.toLowerCase() == "california") {
             userInput.text = "";
 
-            correctAnswer(one);
+            correctAnswer(one , 1);
         } else if (userInput.text == "" || userInput.text.toLowerCase() != "california") {
             noAnswer();
         }
@@ -290,7 +303,7 @@ function levelTBD(one, stage, stageH, stageW) {
         .drag(one);
 
 
-    new Label("Level 1")
+    new Label("Level TBD")
         .alp(.7)
         .pos(30, 30, LEFT, BOTTOM, one);
 
