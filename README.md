@@ -25,7 +25,7 @@ html/css/bootstrap/javascript based project with the use of Zim (https://zimjs.c
 ### Developers
 
 Megan Ormonde: 
-Site: https://www.mzmo.dev/
+Site: https://www.mzmo.dev/ - This is also where the storytelling is listed
 LinkedIn: https://www.linkedin.com/in/megan-ormonde-a7623b127/
 Github: https://github.com/mzmormonde
 
