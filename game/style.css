@@ -9,60 +9,7 @@ purple: 75749E
 
 
 html, body{
-    color: #75749E;
+    
     background: #CCDADB;
-    position: relative; 
-    text-shadow: .05vw .05vw rgba(0, 0, 0, 0.6); 
-    font-size: clamp(1vw, 1.2vw, 1.4vw);
-    text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
-    letter-spacing: 0.1em;
+    
   }
-
-  p{
-      color: #75749E; 
-      font-weight: bold;
-  }
-  
-  h2{
-    color: #F8F6EE; 
-    font-weight: bold;
-  }
-
-  
-  .profileContainer{
-    margin: auto; 
-    height: 100%;
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
-    border-radius: .5rem;
-    padding: 1rem; 
-    background-color: #F8F6EE;
-    /* width: clamp(14rem, 17rem, 18rem); */
-  }
-
-  .profileImg{
-      width: clamp(5rem, 7rem, 10rem);
-      height: clamp(5rem, 7rem, 10rem); 
-      border-radius: 5rem;
-      
-  }
-
-  
-  ::-webkit-scrollbar {
-    width: clamp(.5em, .65em, .8em);
-}
-/* Track */
-::-webkit-scrollbar-track {
-    background: #CCDADB; 
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #769296; 
-    border-radius: .8em;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #75749E; 
-}

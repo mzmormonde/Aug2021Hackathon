@@ -11,6 +11,8 @@ If you are wanting to run on local, clone the repo and open the main html file (
 This will automatically take you to the home page where you can then navigate to the game, our personal websites and linkedin pages
 or to Zim, which was used to aid in this project
 
+NOTE: If you open the console while testing, the answer to each question is displayed for ease of testing
+
 ### Development
 
 Web and frontend development is a new area, and games are a completely unfamiliar area for us, so this is a pretty simple
