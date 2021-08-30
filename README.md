@@ -19,10 +19,13 @@ Web and frontend development is a new area, and games are a completely unfamilia
 html/css/bootstrap/javascript based project with the use of Zim (https://zimjs.com/index.html)
 
 ### Screenshots
-![Level 1](Images/Picture1.png)
+![Level 4](Images/Picture2.png)
+![Top of Home Page](Images/Picture1.png)
 
 ### Developers
 
 Megan Ormonde: 
 Site: https://www.mzmo.dev/
 LinkedIn: https://www.linkedin.com/in/megan-ormonde-a7623b127/
+Github: https://github.com/mzmormonde
+
