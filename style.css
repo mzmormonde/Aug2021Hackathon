@@ -16,6 +16,7 @@ html, body{
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
     letter-spacing: 0.1em;
+    scrollbar-color:   rgba(118, 146, 150, .75) rgba(141, 157, 207, .5) ; 
   }
 
   body{
