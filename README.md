@@ -20,8 +20,8 @@ html/css/bootstrap/javascript based project with the use of Zim (https://zimjs.c
 
 ### Screenshots
 ![Level 4](Images/Picture2.png)
-![Top of Home Page](Images/Picture1.png)
-![Link and short blog post on personal site](Images/Picture8)
+![Top of Home Page](Images/Picture3.png)
+![Link and short blog post on personal site](Images/Picture8.png)
 
 ### Developers
 
